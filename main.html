@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>COM-SCI | IT | Cyber | AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --primary: #7b1fa2;
+  --primary-dark: #512da8;
+  --primary-light: #a259ff;
+  --secondary: #e1bee7;
+  --accent: #00d4ff;
+  --gradient-main: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  --background: #0a0a0f;
+  --surface: rgba(26, 21, 55, 0.9);
+  --text: #ffffff;
+  --text-light: #b8b8d1;
+  --border: rgba(167, 89, 255, 0.3);
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 30px rgba(167, 89, 255, 0.4);
+  --radius: 20px;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Prompt', sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+  z-index: -1;
+  animation: bgMove 20s ease-in-out infinite;
+}
+
+@keyframes bgMove {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-20px, -10px) rotate(1deg); }
+  66% { transform: translate(20px, 10px) rotate(-1deg); }
+}
+
+/* Floating Particles */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 15s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Navigation with Glass Effect */
+nav {
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradient-main);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-main);
+  transition: all 0.5s;
+  z-index: -1;
+}
+
+.nav-links a:hover::before {
+  left: 0;
+}
+
+.nav-links a:hover {
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Hero Section with Advanced Effects */
+.hero {
+  background: var(--gradient-main);
+  position: relative;
+  padding: 6rem 2rem;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cpath d="M50 5L60 35L90 35L67 55L77 85L50 65L23 85L33 55L10 35L40 35Z" fill="rgba(255,255,255,0.1)"/%3E%3C/svg%3E') repeat;
+  background-size: 50px 50px;
+  animation: starMove 20s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes starMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-50px, -50px); }
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff, #f0f0ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: titleFloat 4s ease-in-out infinite;
+}
+
+@keyframes titleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 450px;
+  height: 400px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-glow);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  animation: heroFloat 6s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(1deg); }
+  75% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+.cta-button {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease-out 1s both;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: all 0.6s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Section Styling */
+.section {
+  padding: 5rem 2rem;
+  position: relative;
+}
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  background: var(--gradient-main);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  animation: fadeInUp 1s ease-out;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-main);
+  border-radius: 2px;
+}
+
+/* Enhanced Project Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+.project-card {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-card);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-15px) rotateX(5deg);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--primary-light);
+}
+
+.project-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border: 2px solid var(--border);
+  transition: var(--transition);
+  position: relative;
+  z-index: 2;
+}
+
+.project-card:hover img {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-glow);
+}
+
+.project-card h3 {
+  color: var(--primary-light);
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.project-card ul {
+  list-style: none;
+  color: var(--text-light);
+  position: relative;
+  z-index: 2;
+}
+
+.project-card li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 2rem;
+  transition: var(--transition);
+}
+
+.project-card li::before {
+  content: "⚡";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.project-card:hover li {
+  transform: translateX(10px);
+}
+
+/* Roadmap Image with Special Effects */
+.roadmap-container {
+  text-align: center;
+  margin: 3rem 0;
+  position: relative;
+}
+
+.roadmap-img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-glow);
+  border: 3px solid var(--border);
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+}
+
+.roadmap-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 30px 60px rgba(167, 89, 255, 0.6);
+}
+
+/* Learning Path with Enhanced Animation */
+.learning-path {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  padding: 3rem;
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.learning-path::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-card);
+  opacity: 0.5;
+}
+
+.learning-path img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border: 2px solid var(--border);
+  position: relative;
+  z-index: 2;
+  animation: rotate360 20s linear infinite;
+}
+
+@keyframes rotate360 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.learning-steps {
+  list-style: none;
+  counter-reset: step-counter;
+  position: relative;
+  z-index: 2;
+}
+
+.learning-steps li {
+  counter-increment: step-counter;
+  padding: 1rem 0;
+  position: relative;
+  padding-left: 4rem;
+  font-size: 1.2rem;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.learning-steps li::before {
+  content: counter(step-counter);
+  background: var(--gradient-main);
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-glow);
+  animation: bounce 2s infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.learning-steps li:hover {
+  transform: translateX(20px);
+  color: var(--primary-light);
+}
+
+/* Enhanced Learn Cards */
+.learn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.learn-card {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.learn-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-card);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.learn-card:hover::before {
+  opacity: 1;
+}
+
+.learn-card:hover {
+  transform: translateY(-20px) scale(1.02);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--primary-light);
+}
+
+.learn-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border: 2px solid var(--border);
+  transition: var(--transition);
+  position: relative;
+  z-index: 2;
+}
+
+.learn-card:hover img {
+  transform: scale(1.15) rotateY(20deg);
+  box-shadow: var(--shadow-glow);
+}
+
+.learn-card h3 {
+  color: var(--primary-light);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.learn-card p {
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced Faculty Cards */
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+}
+
+.university-card {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+
+.university-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-card);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.university-card:hover::before {
+  opacity: 1;
+}
+
+.university-card:hover {
+  transform: translateY(-15px) rotateY(5deg);
+  box-shadow: var(--shadow-glow);
+}
+
+.university-header {
+  background: var(--gradient-main);
+  color: white;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.university-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: var(--transition);
+}
+
+.university-card:hover .university-logo {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.university-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.university-info p {
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.university-body {
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.requirements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.requirement {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.requirement:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.requirement h4 {
+  color: var(--primary-light);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.requirement p {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.university-link {
+  display: inline-block;
+  color: var(--primary-light);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: 2px solid var(--primary-light);
+  border-radius: 50px;
+  transition: var(--transition);
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.university-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-light);
+  transition: all 0.4s;
+  z-index: -1;
+}
+
+.university-link:hover::before {
+  left: 0;
+}
+
+.university-link:hover {
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Enhanced Footer */
+footer {
+  background: var(--gradient-main);
+  color: white;
+  padding: 4rem 2rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cpath d="M50 5L60 35L90 35L67 55L77 85L50 65L23 85L33 55L10 35L40 35Z" fill="rgba(255,255,255,0.05)"/%3E%3C/svg%3E') repeat;
+  background-size: 40px 40px;
+  animation: starMove 25s linear infinite reverse;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+}
+
+.footer-logo:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
+}
+
+footer p {
+  margin: 1rem 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+}
+
+footer a:hover {
+  color: white;
+  border-bottom-color: white;
+  transform: translateY(-2px);
+}
+
+/* Enhanced Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll Animations */
+.fade-in { animation: fadeInUp 0.8s ease-out; }
+.fade-in-down { animation: fadeInDown 0.8s ease-out; }
+.slide-in-left { animation: slideInLeft 0.8s ease-out; }
+.slide-in-right { animation: slideInRight 0.8s ease-out; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .learning-path {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .requirements {
+    grid-template-columns: 1fr;
+  }
+  
+  .section {
+    padding: 3rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .project-card,
+  .learn-card,
+  .university-card {
+    padding: 2rem;
+  }
+  
+  .learning-steps li {
+    font-size: 1rem;
+  }
+}
+
+/* Loading Spinner */
+.loading {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loaded {
+  opacity: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-main);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+  </style>
+</head>
+<body>
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <nav class="fade-in-down">
+    <div class="nav-container">
+      <div class="nav-logo">Login Meta Comp</div>
+      <ul class="nav-links">
+        <li><a href="#hero">หน้าแรก</a></li>
+        <li><a href="#projects">โครงงาน</a></li>
+        <li><a href="#learn">สอน/เวิร์กช็อป</a></li>
+        <li><a href="#faculty">คณะ/สาขา</a></li>
+        <li><a href="#contact">ติดต่อ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>เส้นทางเทคโนโลยีแห่งอนาคต</h1>
+        <p>เรียนรู้สาย COM-SCI, IT, Cybersecurity และ AI ผ่านโปรเจกต์จริง<br>ตั้งแต่ AI, Data Analysis, Web Security, Automation, และ Web-App</p>
+        <a href="#projects" class="cta-button">ดูตัวอย่างโครงงาน</a>
+      </div>
+      <img src="Ai_hero.jpg" alt="Technology Hero" class="hero-image">
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="section-container">
+      <h2 class="section-title">ตัวอย่างโครงงานเด่น</h2>
+      <div class="projects-grid">
+        <div class="project-card loading">
+          <img src="Data.jpg" alt="Data Analysis">
+          <h3>วิเคราะห์ข้อมูลด้วย Python & AI</h3>
+          <ul>
+            <li>เรียนรู้เครื่องมือพื้นฐานสำหรับ Data Analysis</li>
+            <li>ฝึกใช้ AI เพื่อทำนายหรือวิเคราะห์ข้อมูล</li>
+            <li>Mini Project: วิเคราะห์ชุดข้อมูลจริง</li>
+          </ul>
+        </div>
+        <div class="project-card loading">
+          <img src="Cyber.jpg" alt="Cybersecurity">
+          <h3>Cybersecurity Project</h3>
+          <ul>
+            <li>สร้างเว็บพร้อมระบบความปลอดภัย</li>
+            <li>ทดลอง Authentication, SSL, 2FA ฯลฯ</li>
+            <li>Mini Project: Web Security Challenge</li>
+          </ul>
+        </div>
+        <div class="project-card loading">
+          <img src="AIMarget.jpg" alt="AI Automation">
+          <h3>AI-Automation for Marketing</h3>
+          <ul>
+            <li>สร้าง Chatbot ด้วย AI</li>
+            <li>Workflow Automation สำหรับ Marketing</li>
+            <li>Mini Project: Chatbot Demo</li>
+          </ul>
+        </div>
+        <div class="project-card loading">
+          <img src="Ai_comp.jpg" alt="Web-App">
+          <h3>Web-App สำหรับองค์กร</h3>
+          <ul>
+            <li>ระบบบันทึกเข้า-ออกพนักงาน</li>
+            <li>Dashboard & รายงาน</li>
+            <li>Mini Project: Staff Attendance App</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Path Section -->
+  <section class="section">
+    <div class="section-container">
+      <h2 class="section-title">เส้นทางการเรียนรู้</h2>
+      <div class="roadmap-container">
+        <img src="roadmap.jpg" alt="Learning Roadmap" class="roadmap-img">
+      </div>
+      <div class="learning-path">
+        <img src="roadmap.jpg" alt="Learning Path">
+        <ol class="learning-steps">
+          <li style="--i: 0">เรียนรู้พื้นฐานภาษา Python, HTML/CSS, JavaScript</li>
+          <li style="--i: 1">เลือกสายงานที่สนใจ (AI, Cybersecurity, Web-App)</li>
+          <li style="--i: 2">ลงมือทำโปรเจกต์จริง / ส่งประกวด</li>
+          <li style="--i: 3">นำเสนอผลงาน และเตรียม Portfolio</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learn Section -->
+  <section id="learn" class="section" style="background: rgba(26, 21, 55, 0.3);">
+    <div class="section-container">
+      <h2 class="section-title">เสริมทักษะและโปรเจกต์สายคอม-วิศวะกับหัวข้อยอดนิยม</h2>
+      <div class="learn-grid">
+        <div class="learn-card loading">
+          <img src="plancom.jpg" alt="Computer Engineering Project">
+          <h3>สอนทำโครงงานด้านวิศวะคอมพิวเตอร์</h3>
+          <p>แนะแนวคิด การวางระบบ การออกแบบวงจร และการนำซอฟต์แวร์มาประยุกต์ในโปรเจกต์ฮาร์ดแวร์ เช่น IoT, Robot, Automation</p>
+        </div>
+        <div class="learn-card loading">
+          <img src="game.jpg" alt="Game Dev Godot Unity">
+          <h3>สอนสร้างเกมด้วย Godot และ Unity</h3>
+          <p>เริ่มตั้งแต่พื้นฐานจนถึงการสร้างเกม 2D/3D ระบบฟิสิกส์, UI, AI และการปล่อยลงแพลตฟอร์มต่าง ๆ</p>
+        </div>
+        <div class="learn-card loading">
+          <img src="automate.jpg" alt="AI Automate Make.com N8N">
+          <h3>สอนทำ AI Automation ด้วย Make.com & N8N</h3>
+          <p>เรียนรู้ระบบ Automation เชื่อมต่อ API, Bot, Workflow อัตโนมัติทั้งแบบ no-code และ low-code</p>
+        </div>
+        <div class="learn-card loading">
+          <img src="basic.jpg" alt="Coding Basic Python C C++ Java">
+          <h3>สอนพื้นฐานการเขียนโค้ด Python, C, C++, Java</h3>
+          <p>เข้าใจหลักการคิดเชิงตรรกะ อัลกอริทึม การเขียนโค้ดเบื้องต้น พร้อมตัวอย่างงานจริง</p>
+        </div>
+        <div class="learn-card loading">
+          <img src="app.jpg" alt="Web Dev React">
+          <h3>สอนสร้างเว็บแอปฯ ด้วย React</h3>
+          <p>ตั้งแต่โครงสร้างเว็บ การใช้ Component, State, Props การเชื่อมต่อ API และ Deploy เว็บขึ้นออนไลน์</p>
+        </div>
+        <div class="learn-card loading">
+          <img src="react.jpg" alt="Image Processing Object Detection Classification">
+          <h3>สอน Image Processing (Object Detection, Classification)</h3>
+          <p>ปูพื้นฐานการใช้ Python, OpenCV, TensorFlow/YOLO เพื่อจำแนกและตรวจจับวัตถุในภาพ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty Category Section -->
+  <section id="faculty" class="section">
+    <div class="section-container">
+      <h2 class="section-title">คณะวิทยาศาสตร์ (สาขาคอมพิวเตอร์และที่เกี่ยวข้อง)</h2>
+      <p style="text-align: center; color: var(--text-light); margin-bottom: 4rem; font-size: 1.1rem;">ข้อมูลเบื้องต้นรอบ Portfolio (โปรดตรวจสอบประกาศล่าสุดจากมหาวิทยาลัย)</p>
+      
+      <div class="faculty-grid">
+        <!-- จุฬา -->
+        <div class="university-card loading">
+          <div class="university-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_of_Chulalongkorn_University.svg/1200px-Logo_of_Chulalongkorn_University.svg.png" alt="จุฬาฯ" class="university-logo">
+            <div class="university-info">
+              <h3>จุฬาลงกรณ์มหาวิทยาลัย</h3>
+              <p>คณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์</p>
+            </div>
+          </div>
+          <div class="university-body">
+            <div class="requirements">
+              <div class="requirement">
+                <h4>GPAX</h4>
+                <p>≥ 3.25-3.5</p>
+              </div>
+              <div class="requirement">
+                <h4>จำนวนรับ (รอบพอร์ต)</h4>
+                <p>~ 20-30 คน</p>
+              </div>
+              <div class="requirement">
+                <h4>ค่าเทอม (โดยประมาณ)</h4>
+                <p>~ 21,000 บ./เทอม</p>
+              </div>
+              <div class="requirement">
+                <h4>English Test</h4>
+                <p>พิจารณา (บางโครงการ)</p>
+              </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+              <h4 style="color: var(--primary-light); margin-bottom: 1rem;">สาขายอดฮิต:</h4>
+              <p style="margin-bottom: 0.5rem;"><strong>AI & Machine Learning:</strong> GPAX ≥ 3.5, Portfolio (โครงงาน AI/ML), รางวัล สอวน. คอมฯ</p>
+              <p><strong>Software Development:</strong> GPAX ≥ 3.25, Portfolio (ผลงาน Application/Web)</p>
+            </div>
+            <a href="https://www.chula.ac.th/academic/faculty-of-science/" target="_blank" rel="noopener noreferrer" class="university-link">เว็บไซต์คณะวิทยาศาสตร์ จุฬาฯ</a>
+          </div>
+        </div>
+
+        <!-- เกษตร -->
+        <div class="university-card loading">
+          <div class="university-header">
+            <img src="https://upload.wikimedia.org/wikipedia/th/thumb/5/51/Logo_ku_th.svg/1200px-Logo_ku_th.svg.png" alt="ม.เกษตรฯ" class="university-logo">
+            <div class="university-info">
+              <h3>มหาวิทยาลัยเกษตรศาสตร์</h3>
+              <p>คณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์</p>
+            </div>
+          </div>
+          <div class="university-body">
+            <div class="requirements">
+              <div class="requirement">
+                <h4>GPAX</h4>
+                <p>≥ 3.00</p>
+              </div>
+              <div class="requirement">
+                <h4>จำนวนรับ (รอบพอร์ต)</h4>
+                <p>~ 30-50 คน</p>
+              </div>
+              <div class="requirement">
+                <h4>ค่าเทอม (โดยประมาณ)</h4>
+                <p>~ 17,000 บ./เทอม</p>
+              </div>
+              <div class="requirement">
+                <h4>English Test</h4>
+                <p>พิจารณา (บางโครงการ)</p>
+              </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+              <h4 style="color: var(--primary-light); margin-bottom: 1rem;">สาขายอดฮิต:</h4>
+              <p style="margin-bottom: 0.5rem;"><strong>Data Science:</strong> GPAX ≥ 3.00, Portfolio (โครงงานวิเคราะห์ข้อมูล), ความรู้สถิติ/โปรแกรมมิ่ง</p>
+              <p><strong>Game Development:</strong> GPAX ≥ 3.00, Portfolio (ผลงานเกม, Art, Story)</p>
+            </div>
+            <a href="https://www.ku.ac.th/th/faculty-of-science/" target="_blank" rel="noopener noreferrer" class="university-link">เว็บไซต์คณะวิทยาศาสตร์ เกษตรฯ</a>
+          </div>
+        </div>
+
+        <!-- มหิดล -->
+        <div class="university-card loading">
+          <div class="university-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Mahidol_U.png" alt="มหิดล" class="university-logo">
+            <div class="university-info">
+              <h3>มหาวิทยาลัยมหิดล</h3>
+              <p>คณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์</p>
+            </div>
+          </div>
+          <div class="university-body">
+            <div class="requirements">
+              <div class="requirement">
+                <h4>GPAX</h4>
+                <p>ตามกำหนดคณะ</p>
+              </div>
+              <div class="requirement">
+                <h4>จำนวนรับ (รอบพอร์ต)</h4>
+                <p>โปรดตรวจสอบ</p>
+              </div>
+              <div class="requirement">
+                <h4>ค่าเทอม (โดยประมาณ)</h4>
+                <p>~ 25,000 บ./เทอม</p>
+              </div>
+              <div class="requirement">
+                <h4>English Test</h4>
+                <p>พิจารณา</p>
+              </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+              <h4 style="color: var(--primary-light); margin-bottom: 1rem;">สาขายอดฮิต:</h4>
+              <p><strong>Computational Science:</strong> GPAX ≥ 3.00, Portfolio (เน้นการประยุกต์ใช้คอมพิวเตอร์ในงานวิจัย)</p>
+            </div>
+            <p style="font-style: italic; color: var(--text-light); margin-bottom: 2rem;">(ข้อมูลสาขา Com Sci ในคณะวิทย์ มหิดล อาจต้องตรวจสอบเพิ่มเติมจากประกาศรับตรงของคณะ)</p>
+            <a href="https://science.mahidol.ac.th/th/" target="_blank" rel="noopener noreferrer" class="university-link">เว็บไซต์คณะวิทยาศาสตร์ มหิดล</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-logos">
+        <img src="Logo.png" alt="Login Learning Co. Logo" class="footer-logo">
+        <img src="LogoMeta.png" alt="Login Meta Co. Logo" class="footer-logo">
+      </div>
+      <p>ที่อยู่: 917 จรัญสนิทวงศ์ 75 บางพลัด บางพลัด</p>
+      <p>พี่ก้อง: <a href="tel:0909699578">090-969-9578</a> / พี่เก็ก: <a href="tel:0834360294">083-436-0294</a></p>
+      <p>© 2024 LOGIN LEARNING Co. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Enhanced scroll animations with Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('loaded');
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0) scale(1)';
+          }, index * 100); // Staggered animation
+        }
+      });
+    }, observerOptions);
+
+    // Parallax effect for hero section
+    function parallaxEffect() {
+      const scrolled = window.pageYOffset;
+      const heroSection = document.querySelector('.hero');
+      const heroImage = document.querySelector('.hero-image');
+      
+      if (heroSection && heroImage) {
+        heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+      }
+    }
+
+    // Advanced loading animations
+    function initAnimations() {
+      const cards = document.querySelectorAll('.project-card, .learn-card, .university-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px) scale(0.9)';
+        card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        card.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(card);
+      });
+
+      // Add hover sound effect simulation
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-20px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+    }
+
+    // Mouse trail effect
+    function createMouseTrail() {
+      let mouseX = 0, mouseY = 0;
+      let trailElements = [];
+      
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Create trail element
+        const trail = document.createElement('div');
+        trail.style.position = 'fixed';
+        trail.style.left = mouseX + 'px';
+        trail.style.top = mouseY + 'px';
+        trail.style.width = '6px';
+        trail.style.height = '6px';
+        trail.style.background = 'var(--primary-light)';
+        trail.style.borderRadius = '50%';
+        trail.style.pointerEvents = 'none';
+        trail.style.zIndex = '9999';
+        trail.style.opacity = '0.7';
+        trail.style.transition = 'all 0.5s ease-out';
+        
+        document.body.appendChild(trail);
+        trailElements.push(trail);
+        
+        // Remove trail after animation
+        setTimeout(() => {
+          trail.style.opacity = '0';
+          trail.style.transform = 'scale(0)';
+          setTimeout(() => {
+            if (trail.parentNode) {
+              trail.parentNode.removeChild(trail);
+            }
+            trailElements = trailElements.filter(el => el !== trail);
+          }, 500);
+        }, 100);
+        
+        // Limit number of trail elements
+        if (trailElements.length > 10) {
+          const oldTrail = trailElements.shift();
+          if (oldTrail && oldTrail.parentNode) {
+            oldTrail.parentNode.removeChild(oldTrail);
+          }
+        }
+      });
+    }
+
+    // Text typewriter effect
+    function typewriterEffect(element, text, speed = 50) {
+      let i = 0;
+      element.innerHTML = '';
+      
+      function typeWriter() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+      
+      typeWriter();
+    }
+
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      initAnimations();
+      createMouseTrail();
+      
+      // Add scroll listener for parallax
+      window.addEventListener('scroll', parallaxEffect);
+      
+      // Add loading class removal after a delay
+      setTimeout(() => {
+        document.querySelectorAll('.loading').forEach(el => {
+          el.classList.remove('loading');
+        });
+      }, 500);
+      
+      // Add dynamic background color change on scroll
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+        
+        const hue = 240 + (scrollPercent * 60); // Change from blue to purple
+        document.documentElement.style.setProperty('--primary', `hsl(${hue}, 70%, 50%)`);
+      });
+    });
+
+    // Add click ripple effect
+    document.addEventListener('click', function(e) {
+      const ripple = document.createElement('div');
+      ripple.style.position = 'fixed';
+      ripple.style.left = e.clientX + 'px';
+      ripple.style.top = e.clientY + 'px';
+      ripple.style.width = '0';
+      ripple.style.height = '0';
+      ripple.style.border = '2px solid var(--primary-light)';
+      ripple.style.borderRadius = '50%';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.zIndex = '9999';
+      ripple.style.opacity = '0.8';
+      ripple.style.transition = 'all 0.6s ease-out';
+      
+      document.body.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.style.width = '100px';
+        ripple.style.height = '100px';
+        ripple.style.marginLeft = '-50px';
+        ripple.style.marginTop = '-50px';
+        ripple.style.opacity = '0';
+      }, 10);
+      
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 600);
+    });
+  </script>
+</body>
+</html>
